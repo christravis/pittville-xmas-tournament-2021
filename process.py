@@ -27,8 +27,8 @@ def process_player(player, opponent1, opponent2, score):
 		grid[player][opponent1] = []
 	if opponent2 not in grid[player]:
 		grid[player][opponent2] = []
-	grid[player][opponent1].append(score)
-	grid[player][opponent2].append(score)
+	grid[player][opponent1].append(int(score))
+	grid[player][opponent2].append(int(score))
 
 for line in lines:
 	line = line.strip()
@@ -65,7 +65,7 @@ for p1 in players:
 	for p2 in players:
 		if p2 in grid[p1]:
 			game_scores_against_opponent = grid[p1][p2]
-			opponent_cells.append('|'.join(game_scores_against_opponent))
+			opponent_cells.append('|'.join([str(score) for score in game_scores_against_opponent]))
 			opponent_count += 1
 			score_count += len(game_scores_against_opponent)
 			best_opponent_score = max(game_scores_against_opponent)
